@@ -17,8 +17,17 @@ relevant technical skills.
 ## Agree on small phases
 
 Ground the proposal in the relevant implementation, tests, and available data.
-Split the task into small, independently reviewable outcomes with clear acceptance
-checks. A simple task may need only one phase; do not invent a fixed phase count.
+Make each phase one bounded, independently verifiable technical step; it may leave
+the overall feature incomplete. Separate results that can be reviewed individually
+instead of grouping them under a broad milestone such as a complete screen. Keep
+implementation, verification, and corrections for the same result together rather
+than creating phases per file or test.
+
+Detail only the next phase: its objective, included work, and concrete completion
+check. Keep later phases as an adjustable outline of similarly bounded steps,
+refining them with what the current phase reveals. Size phases for focused review
+and an early opportunity for user steering. A simple task may need only one phase;
+do not impose fixed phase counts, file limits, or time budgets.
 
 Present the plan and the first concrete phase before implementing it. A request to
 implement an agreed plan authorizes its first phase when the host allows execution;
@@ -33,6 +42,11 @@ this workflow sets no fixed test count. Handle review corrections within the pha
 without adding approval checkpoints for individual files, edits, or checks. Raise
 material changes to behavior or scope before expanding the agreed work.
 
+If unexpected complexity or newly discovered work makes the current step too
+broad, pause further implementation and propose a smaller boundary for the user's
+approval. Report what is complete and what remains; do not declare the original
+phase complete while agreed work is still pending.
+
 At the phase boundary, report the result, verification performed, limitations, and
 any unresolved findings. Propose the next phase concretely and stop for the user's
 approval. While waiting, read-only exploration may prepare the proposal, but do
@@ -45,9 +59,12 @@ that phase. A correction request or acceptance of a completed result alone does
 not authorize starting the next phase or unrelated work. A status question does
 not cancel the current task; answer it and continue within its authorization.
 
-After the final phase, present the completed work and its verification without
-inventing another phase. Treat any explicit change to the approval agreement as
-user steering, subject to the host's permissions and operating mode.
+After the final phase, present the completed work and its verification, request
+the user's approval of the result, and stop without generating manual acceptance
+scenarios. This also applies to single-phase tasks. If the user requests
+corrections, address them within the phase, verify and report the updated result,
+and wait for approval again. Treat any explicit change to the approval agreement
+as user steering, subject to the host's permissions and operating mode.
 
 ## Challenge decisions at useful boundaries
 
@@ -73,11 +90,16 @@ satisfy this workflow.
 
 ## Provide concise functional acceptance scenarios
 
-When the requested functionality is complete, provide manual Gherkin scenarios
-using [the shared scenario guidelines](../gherkin-scenarios/references/scenario-guidelines.md).
-Provide them earlier if requested, but do not repeat them at every internal
-implementation phase or force them onto documentation-only work or internal
-refactors with no behavior change.
+Generate manual Gherkin scenarios only after the requested functionality is
+complete and the user has approved the results of every phase, including the
+final phase. Authorization to implement a phase is not approval of its result.
+Once all results are approved, provide the scenarios directly using
+[the shared scenario guidelines](../gherkin-scenarios/references/scenario-guidelines.md),
+without inventing another phase or requesting separate authorization.
+
+Keep automated tests and technical verification within each phase. Do not repeat
+manual acceptance scenarios at every internal implementation phase or force them
+onto documentation-only work or internal refactors with no behavior change.
 
 Read the file as passive authoring guidance, not as an invocation of another skill.
 Keep this workflow's phase approvals and review process. If the guide is missing,
