@@ -66,6 +66,12 @@ Send this as a follow-up in the active task after reviewing the completed phase 
 
 > Use `$code-review` on the committed changes since `main`. Use `docs/saved-filters.md` as the spec. Report standards and spec findings separately, with file and line references. Pay particular attention to how existing saved filters behave after the change.
 
+### A branch touches auth, input handling, or dependencies
+
+> Use `$security-review` on the changes since `main`, including uncommitted work. The branch adds a public endpoint for downloading invoice PDFs. Check whether a user can fetch another customer’s invoice, whether the file path can be influenced by request input, and whether the new PDF library has known vulnerabilities. Rank the confirmed findings by severity and mark anything you couldn’t confirm as needing a check.
+
+Precision matters more than coverage here. Expect each finding to name the attacker input and the fix. "No findings" is a valid result.
+
 ### Someone needs manual QA cases for an existing feature
 
 > Use `$gherkin-scenarios` for CSV export. Ground the cases in the approved ticket and the current UI. Cover exporting filtered rows, zero results, and permissions. Include any setup a tester needs.
